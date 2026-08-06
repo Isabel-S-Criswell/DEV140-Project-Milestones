@@ -1,0 +1,144 @@
+/* =========================================================
+   PALETTE & TYPOGRAPHY
+   - Background: Eggshell (#FEF9E7)
+   - Accents / Cards: Soft Lilac (#D8B4FE)
+   - Text & Nav: Dark Purple (#3B0764)
+   - Fonts: Playfair Display (Serif) + Inter (Sans-Serif)
+   ========================================================= */
+
+* {
+  box-sizing: border-box; /* Prevents horizontal scroll */
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #FEF9E7;
+  color: #3B0764;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Serif font for headings */
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #3B0764;
+  margin-top: 0;
+  margin-bottom: 16px; /* 8px system (16px) */
+}
+
+/* =========================================================
+   1. FLEXBOX NAVIGATION (Header)
+   Requirement: Flexbox multi-element layout & ID Selector (#main-nav)
+   ========================================================= */
+#main-nav {
+  background-color: #3B0764;
+  margin-bottom: 32px; /* 8px system (32px) */
+  padding: 16px 24px;  /* 8px system (16px / 24px) */
+  border-bottom: 4px solid #D8B4FE;
+}
+
+#main-nav nav {
+  display: flex;
+  flex-direction: column; /* Mobile first: stacked menu */
+  align-items: center;
+  gap: 16px; /* 8px system */
+}
+
+#main-nav a {
+  color: #FEF9E7;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#main-nav a:hover {
+  color: #D8B4FE;
+}
+
+/* =========================================================
+   2. CLASS SELECTOR (.card) & TYPE SELECTOR (p)
+   ========================================================= */
+.card {
+  background-color: #D8B4FE;
+  padding: 24px;              /* 8px system */
+  border: 2px solid #C084FC;
+  border-radius: 16px;        /* 8px system */
+  height: 100%;
+}
+
+p {
+  color: #3B0764;
+  margin-top: 8px;            /* 8px system */
+  margin-bottom: 16px;        /* 8px system */
+  padding: 16px;              /* 8px system */
+  border: 1px dashed #A855F7;
+  background-color: #FEF9E7;
+  border-radius: 8px;         /* 8px system */
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #581C87;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   3. RESPONSIVENESS & MEDIA QUERIES
+   ========================================================= */
+
+/* Mobile Default (320px) */
+.grid-container {
+  display: block;
+  padding: 0 16px;
+  max-width: 100%;
+}
+
+.card {
+  margin-bottom: 24px;
+}
+
+/* MEDIA QUERY 1: Tablet Breakpoint (768px and up) */
+@media (min-width: 768px) {
+  #main-nav nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2-column Grid */
+    gap: 24px;
+    padding: 0 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card {
+    margin-bottom: 0;
+  }
+}
+
+/* MEDIA QUERY 2: Desktop Breakpoint (1200px and up) */
+@media (min-width: 1200px) {
+  .grid-container {
+    max-width: 1120px; /* Constrains line length for desktop */
+    gap: 32px;
+    padding: 0 48px;
+  }
+
+  #main-nav {
+    padding: 24px 48px;
+  }
+}
