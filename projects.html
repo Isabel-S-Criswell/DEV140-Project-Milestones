@@ -14,25 +14,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <!-- 1. NAVIGATION HEADER (Shared across all pages) -->
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects &amp; Work</a>
-            <a href="about.html">About Me &amp; Contact</a>
-        </nav>
+<header id="main-nav">
+  <nav aria-label="Main Navigation" class="nav-links">
+    <a href="index.html" class="nav-btn">HOME</a>
+    <a href="projects.html" class="nav-btn">PROJECTS & WORK</a>
+    <a href="contact.html" class="nav-btn">ABOUT ME & CONTACT</a>
+  </nav>
 
-        <!-- Accessibility Options Dropdown -->
+  <!-- Accessibility Dropdown inside the same header bar -->
   <div class="a11y-dropdown">
-    <button id="a11y-toggle-btn" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility Options">
-      <span>♿ Accessibility</span>
+    <button id="a11y-toggle-btn" type="button" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility Options">
+      ♿ Accessibility
     </button>
     <div id="a11y-menu" class="a11y-menu-content" hidden>
       <button type="button" id="toggle-text-size">Toggle Larger Text</button>
       <button type="button" id="toggle-high-contrast">Toggle High Contrast</button>
     </div>
   </div>
-    </header>
+</header>
 
     <!-- 2. MAIN PROJECTS CONTENT -->
     <main class="grid-container">
