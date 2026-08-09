@@ -14,13 +14,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 1. NAVIGATION HEADER (Shared across all pages) -->
+   <!-- 1. NAVIGATION HEADER (Shared across all pages) -->
     <header>
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects &amp; Work</a>
             <a href="about.html">About Me &amp; Contact</a>
         </nav>
+
+        <!-- Accessibility Options Dropdown -->
+  <div class="a11y-dropdown">
+    <button id="a11y-toggle-btn" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility Options">
+      <span>♿ Accessibility</span>
+    </button>
+    <div id="a11y-menu" class="a11y-menu-content" hidden>
+      <button type="button" id="toggle-text-size">Toggle Larger Text</button>
+      <button type="button" id="toggle-high-contrast">Toggle High Contrast</button>
+    </div>
+  </div>
     </header>
 
     <!-- 2. MAIN ABOUT & CONTACT CONTENT -->
@@ -29,7 +40,7 @@
         <section class="card">
             <h1>About Me</h1>
             <!-- Placeholder for your profile picture from the wireframe -->
-            <img src="placeholder.jpg" alt="Isabel Criswell profile photo" width="200">
+            <img src="profile.jpg" alt="Isabel Criswell profile photo" width="200">
             
             <p>Hi, I'm Isabel! I am an IT student specializing in Applied AI and currently working as a Data Specialist. I have a deep passion for user experience design, building functional systems, and creating intuitive, clear digital solutions that bridge the gap between data and people.</p>
         </section>
@@ -43,6 +54,53 @@
                 <li><strong>LinkedIn:</strong> linkedin.com/in/yourusername</li>
             </ul>
         </section>
+
+        <section id="contact-section">
+  <h2>Contact Me</h2>
+  
+  <form id="contact-form" novalidate>
+    <!-- Field 1: Name -->
+    <div class="form-group">
+      <label for="full-name">Full Name <span class="required">*</span></label>
+      <input type="text" id="full-name" name="full-name" required aria-describedby="name-error" />
+      <span class="error-message" id="name-error" role="alert"></span>
+    </div>
+
+    <!-- Field 2: Email -->
+    <div class="form-group">
+      <label for="email">Email Address <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required aria-describedby="email-error" />
+      <span class="error-message" id="email-error" role="alert"></span>
+    </div>
+
+    <!-- Field 3: Topic (Fieldset & Legend for grouped inputs) -->
+    <fieldset class="form-group">
+      <legend>Reason for Inquiry <span class="required">*</span></legend>
+      <div class="radio-option">
+        <input type="radio" id="reason-job" name="reason" value="job" required />
+        <label for="reason-job">Job Opportunity</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" id="reason-freelance" name="reason" value="freelance" />
+        <label for="reason-freelance">Freelance Project</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" id="reason-other" name="reason" value="other" />
+        <label for="reason-other">General Question</label>
+      </div>
+      <span class="error-message" id="reason-error" role="alert"></span>
+    </fieldset>
+
+    <!-- Field 4: Message -->
+    <div class="form-group">
+      <label for="message">Message <span class="required">*</span></label>
+      <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+      <span class="error-message" id="message-error" role="alert"></span>
+    </div>
+
+    <button type="submit" class="btn-submit">Send Message</button>
+  </form>
+</section>
     </main>
 
     <!-- 3. FOOTER -->

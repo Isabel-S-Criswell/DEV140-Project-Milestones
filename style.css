@@ -1,19 +1,29 @@
 /* =========================================================
-   PALETTE & TYPOGRAPHY
+   PALETTE & TYPOGRAPHY VARIABLES
    - Background: Eggshell (#FEF9E7)
-   - Accents / Cards: Soft Lilac (#D8B4FE)
-   - Text & Nav: Dark Purple (#3B0764)
-   - Fonts: Playfair Display (Serif) + Inter (Sans-Serif)
+   - Cards / Accents: Soft Lilac (#D8B4FE)
+   - Text & Headers: Dark Purple (#3B0764)
+   - Error Text: Deep Crimson (#991B1B)
+   - System Spacing: Multiples of 8px
    ========================================================= */
 
+:root {
+  --bg-eggshell: #FEF9E7;
+  --text-purple: #3B0764;
+  --accent-lilac: #D8B4FE;
+  --border-purple: #C084FC;
+  --dashed-purple: #A855F7;
+  --error-red: #991B1B;
+}
+
 * {
-  box-sizing: border-box; /* Prevents horizontal scroll */
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #FEF9E7;
-  color: #3B0764;
+  background-color: var(--bg-eggshell);
+  color: var(--text-purple);
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -22,59 +32,247 @@ body {
 /* Serif font for headings */
 h1, h2, h3 {
   font-family: 'Playfair Display', Georgia, serif;
-  color: #3B0764;
+  color: var(--text-purple);
   margin-top: 0;
-  margin-bottom: 16px; /* 8px system (16px) */
+  margin-bottom: 16px; /* 8px system */
+}
+
+/* Paragraph styling */
+p {
+  color: var(--text-purple);
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px dashed var(--dashed-purple);
+  background-color: var(--bg-eggshell);
+  border-radius: 8px;
 }
 
 /* =========================================================
-   1. FLEXBOX NAVIGATION (Header)
-   Requirement: Flexbox multi-element layout & ID Selector (#main-nav)
+   1. FLEXBOX NAVIGATION & HEADER
    ========================================================= */
 #main-nav {
-  background-color: #3B0764;
-  margin-bottom: 32px; /* 8px system (32px) */
-  padding: 16px 24px;  /* 8px system (16px / 24px) */
-  border-bottom: 4px solid #D8B4FE;
+  background-color: var(--text-purple);
+  margin-bottom: 32px;
+  padding: 16px 24px;
+  border-bottom: 4px solid var(--accent-lilac);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 #main-nav nav {
   display: flex;
-  flex-direction: column; /* Mobile first: stacked menu */
+  flex-direction: column;
   align-items: center;
-  gap: 16px; /* 8px system */
+  gap: 16px;
 }
 
 #main-nav a {
-  color: #FEF9E7;
+  color: var(--bg-eggshell);
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-#main-nav a:hover {
-  color: #D8B4FE;
+#main-nav a:hover,
+#main-nav a:focus {
+  color: var(--accent-lilac);
+  outline: 2px auto var(--accent-lilac);
 }
 
 /* =========================================================
-   2. CLASS SELECTOR (.card) & TYPE SELECTOR (p)
+   2. ACCESSIBILITY DROPDOWN MENU
    ========================================================= */
-.card {
-  background-color: #D8B4FE;
-  padding: 24px;              /* 8px system */
-  border: 2px solid #C084FC;
-  border-radius: 16px;        /* 8px system */
-  height: 100%;
+.a11y-dropdown {
+  position: relative;
 }
 
-p {
-  color: #3B0764;
-  margin-top: 8px;            /* 8px system */
-  margin-bottom: 16px;        /* 8px system */
-  padding: 16px;              /* 8px system */
-  border: 1px dashed #A855F7;
-  background-color: #FEF9E7;
-  border-radius: 8px;         /* 8px system */
+#a11y-toggle-btn {
+  background-color: var(--accent-lilac);
+  color: var(--text-purple);
+  border: 2px solid var(--text-purple);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#a11y-toggle-btn:hover,
+#a11y-toggle-btn:focus {
+  background-color: var(--bg-eggshell);
+  outline: 3px solid var(--text-purple);
+}
+
+.a11y-menu-content {
+  position: absolute;
+  right: 0;
+  top: 130%;
+  background-color: var(--bg-eggshell);
+  border: 2px solid var(--text-purple);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+  min-width: 180px;
+}
+
+.a11y-menu-content[hidden] {
+  display: none;
+}
+
+.a11y-menu-content button {
+  background: var(--accent-lilac);
+  color: var(--text-purple);
+  border: 1px solid var(--text-purple);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.a11y-menu-content button:hover,
+.a11y-menu-content button:focus {
+  background-color: var(--text-purple);
+  color: var(--bg-eggshell);
+}
+
+/* Toggleable States */
+body.large-text {
+  font-size: 1.25rem;
+}
+
+body.high-contrast {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast p,
+body.high-contrast label,
+body.high-contrast legend,
+body.high-contrast a {
+  color: #FFFF00 !important;
+  background-color: #000000 !important;
+  border-color: #FFFF00 !important;
+}
+
+body.high-contrast .card {
+  background-color: #111111 !important;
+  border: 2px solid #FFFF00 !important;
+}
+
+/* =========================================================
+   3. ACCESSIBLE CONTACT FORM STYLING
+   ========================================================= */
+#contact-section {
+  max-width: 640px;
+  margin: 0 auto 32px auto;
+  padding: 0 16px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+label, legend {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-purple);
+}
+
+fieldset.form-group {
+  border: 2px solid var(--border-purple);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--bg-eggshell);
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.radio-option label {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 12px;
+  border: 2px solid var(--text-purple);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-purple);
+  background-color: #FFFFFF;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: 3px solid var(--dashed-purple);
+  border-color: var(--text-purple);
+}
+
+/* High contrast error messages (passes WCAG AA) */
+.error-message {
+  color: var(--error-red);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Strip default paragraph styles if inside error message */
+.error-message p {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.btn-submit {
+  background-color: var(--text-purple);
+  color: var(--bg-eggshell);
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid var(--text-purple);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background-color: var(--accent-lilac);
+  color: var(--text-purple);
+  outline: 2px auto var(--text-purple);
+}
+
+/* =========================================================
+   4. CARDS & GRID LAYOUT
+   ========================================================= */
+.card {
+  background-color: var(--accent-lilac);
+  padding: 24px;
+  border: 2px solid var(--border-purple);
+  border-radius: 16px;
+  height: 100%;
 }
 
 ul {
@@ -89,15 +287,10 @@ li {
 footer {
   text-align: center;
   padding: 24px;
-  color: #581C87;
+  color: var(--text-purple);
   font-size: 0.9rem;
 }
 
-/* =========================================================
-   3. RESPONSIVENESS & MEDIA QUERIES
-   ========================================================= */
-
-/* Mobile Default (320px) */
 .grid-container {
   display: block;
   padding: 0 16px;
@@ -108,17 +301,25 @@ footer {
   margin-bottom: 24px;
 }
 
+/* =========================================================
+   5. RESPONSIVENESS & MEDIA QUERIES
+   ========================================================= */
+
 /* MEDIA QUERY 1: Tablet Breakpoint (768px and up) */
 @media (min-width: 768px) {
+  #main-nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   #main-nav nav {
     flex-direction: row;
-    justify-content: center;
     gap: 32px;
   }
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2-column Grid */
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     padding: 0 32px;
     max-width: 900px;
@@ -133,7 +334,7 @@ footer {
 /* MEDIA QUERY 2: Desktop Breakpoint (1200px and up) */
 @media (min-width: 1200px) {
   .grid-container {
-    max-width: 1120px; /* Constrains line length for desktop */
+    max-width: 1120px;
     gap: 32px;
     padding: 0 48px;
   }
