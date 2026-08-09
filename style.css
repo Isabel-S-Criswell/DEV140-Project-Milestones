@@ -49,13 +49,13 @@ p {
 }
 
 /* =========================================================
-   1. FLEXBOX NAVIGATION & HEADER
+   1. POLISHED HEADER & FLEXBOX NAVIGATION
    ========================================================= */
 #main-nav {
   background-color: var(--text-purple);
-  margin-bottom: 32px;
   padding: 16px 24px;
   border-bottom: 4px solid var(--accent-lilac);
+  box-shadow: 0 4px 14px rgba(59, 7, 100, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,25 +66,29 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
+/* Nav Link Pill Styling */
 #main-nav a {
   color: var(--bg-eggshell);
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #main-nav a:hover,
 #main-nav a:focus {
+  background-color: rgba(216, 180, 254, 0.25);
   color: var(--accent-lilac);
-  outline: 2px auto var(--accent-lilac);
+  outline: none;
 }
 
-/* =========================================================
-   2. ACCESSIBILITY DROPDOWN MENU
-   ========================================================= */
+/* Header Accessibility Button Upgrade */
 .a11y-dropdown {
   position: relative;
 }
@@ -92,34 +96,41 @@ p {
 #a11y-toggle-btn {
   background-color: var(--accent-lilac);
   color: var(--text-purple);
-  border: 2px solid var(--text-purple);
-  padding: 8px 16px;
-  border-radius: 20px;
+  border: 2px solid var(--accent-lilac);
+  padding: 8px 18px;
+  border-radius: 24px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
 }
 
 #a11y-toggle-btn:hover,
 #a11y-toggle-btn:focus {
   background-color: var(--bg-eggshell);
-  outline: 3px solid var(--text-purple);
+  color: var(--text-purple);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Dropdown Menu Overlay */
 .a11y-menu-content {
   position: absolute;
-  right: 0;
+  right: 50%;
+  transform: translateX(50%); /* Centered on mobile */
   top: 130%;
   background-color: var(--bg-eggshell);
   border: 2px solid var(--text-purple);
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 8px;
   z-index: 100;
-  min-width: 180px;
+  min-width: 190px;
 }
 
 .a11y-menu-content[hidden] {
@@ -131,11 +142,12 @@ p {
   color: var(--text-purple);
   border: 1px solid var(--text-purple);
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   text-align: left;
   font-weight: 600;
   font-size: 0.85rem;
+  transition: background-color 0.2s ease;
 }
 
 .a11y-menu-content button:hover,
@@ -144,31 +156,94 @@ p {
   color: var(--bg-eggshell);
 }
 
+/* Tablet & Desktop Header Adjustments */
+@media (min-width: 768px) {
+  #main-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 32px;
+  }
+
+  .a11y-menu-content {
+    right: 0;
+    transform: none; /* Align to right edge on desktop */
+  }
+}
+
 /* Toggleable States */
 body.large-text {
   font-size: 1.25rem;
 }
 
+/* =========================================================
+   2. HIGH CONTRAST MODE (Lilac & White on Dark Eggplant)
+   ========================================================= */
 body.high-contrast {
-  background-color: #000000 !important;
-  color: #FFFF00 !important;
+  background-color: #0D0314 !important; /* Ultra-dark eggplant background */
+  color: #D8B4FE !important;             /* Lilac body text */
 }
 
 body.high-contrast h1,
 body.high-contrast h2,
 body.high-contrast h3,
-body.high-contrast p,
-body.high-contrast label,
 body.high-contrast legend,
-body.high-contrast a {
-  color: #FFFF00 !important;
-  background-color: #000000 !important;
-  border-color: #FFFF00 !important;
+body.high-contrast label {
+  color: #FFFFFF !important;             /* Bright white headers */
 }
 
-body.high-contrast .card {
-  background-color: #111111 !important;
-  border: 2px solid #FFFF00 !important;
+body.high-contrast p,
+body.high-contrast li {
+  color: #D8B4FE !important;
+  background-color: #1A0728 !important;  /* Dark purple card fill */
+  border-color: #D8B4FE !important;
+}
+
+body.high-contrast #main-nav {
+  background-color: #1A0728 !important;
+  border-bottom: 4px solid #D8B4FE !important;
+}
+
+body.high-contrast #main-nav a {
+  color: #FFFFFF !important;
+}
+
+body.high-contrast #main-nav a:hover,
+body.high-contrast #main-nav a:focus {
+  color: #D8B4FE !important;
+  background-color: rgba(216, 180, 254, 0.2) !important;
+}
+
+body.high-contrast .card,
+body.high-contrast fieldset.form-group {
+  background-color: #1A0728 !important;
+  border: 2px solid #D8B4FE !important;
+  color: #D8B4FE !important;
+}
+
+body.high-contrast input[type="text"],
+body.high-contrast input[type="email"],
+body.high-contrast textarea {
+  background-color: #0D0314 !important;
+  color: #FFFFFF !important;
+  border-color: #D8B4FE !important;
+}
+
+body.high-contrast #a11y-toggle-btn,
+body.high-contrast .btn-submit {
+  background-color: #D8B4FE !important;
+  color: #0D0314 !important;
+  border-color: #FFFFFF !important;
+}
+
+body.high-contrast .a11y-menu-content {
+  background-color: #1A0728 !important;
+  border-color: #D8B4FE !important;
+}
+
+body.high-contrast .a11y-menu-content button {
+  background-color: #0D0314 !important;
+  color: #D8B4FE !important;
+  border-color: #D8B4FE !important;
 }
 
 /* =========================================================
