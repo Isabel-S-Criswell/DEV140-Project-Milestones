@@ -436,3 +436,14 @@ footer {
     padding: 24px 48px;
   }
 }
+#github-stats {
+  text-align: center;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  background-color: #f3e8ff;
+  border: 1px solid #c084fc;
+  border-radius: 8px;
+  color: #3b0764;
+  font-weight: 500;
+}
