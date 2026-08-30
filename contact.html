@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Me & Contact</title>
     
-    <!-- GOOGLE FONTS (Serif Heading + Sans-Serif Body) -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <a href="contact.html" class="nav-btn">ABOUT ME & CONTACT</a>
   </nav>
 
-  <!-- Accessibility Dropdown inside the same header bar -->
+  <!-- Accessibility Dropdown -->
   <div class="a11y-dropdown">
     <button id="a11y-toggle-btn" type="button" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility Options">
       ♿ Accessibility
@@ -33,18 +33,16 @@
   </div>
 </header>
 
-    <!-- 2. MAIN ABOUT & CONTACT CONTENT -->
+    <!-- MAIN ABOUT & CONTACT CONTENT -->
     <main class="grid-container">
         <!-- Profile / Bio Section -->
         <section class="card">
             <h1>About Me</h1>
-            <!-- Placeholder for your profile picture from the wireframe -->
             <img src="profile.jpg" alt="Isabel Criswell profile photo" width="200">
-            
             <p>Hi, I'm Isabel! I am an IT student specializing in Applied AI and currently working as a Data Specialist. I have a deep passion for user experience design, building functional systems, and creating intuitive, clear digital solutions that bridge the gap between data and people.</p>
         </section>
 
-        <!-- Contact Section from your wireframe checklist -->
+        <!-- Contact Info Section -->
         <section class="card">
             <h2>Feel free to reach me at:</h2>
             <ul>
@@ -55,55 +53,59 @@
             </ul>
         </section>
 
-        <section id="contact-section">
-  <h2>Contact Me</h2>
-  
-  <form id="contact-form" novalidate>
-    <!-- Field 1: Name -->
-    <div class="form-group">
-      <label for="full-name">Full Name <span class="required">*</span></label>
-      <input type="text" id="full-name" name="full-name" required aria-describedby="name-error" />
-      <span class="error-message" id="name-error" role="alert"></span>
-    </div>
+        <!-- Form Section -->
+        <section id="contact-section" class="card">
+          <h2>Contact Me</h2>
+          
+          <form id="contact-form" novalidate>
+            <!-- Field 1: Name -->
+            <div class="form-group">
+              <label for="full-name">Full Name <span class="required">*</span></label>
+              <input type="text" id="full-name" name="full-name" required aria-describedby="name-error" />
+              <span class="error-message" id="name-error" role="alert"></span>
+            </div>
 
-    <!-- Field 2: Email -->
-    <div class="form-group">
-      <label for="email">Email Address <span class="required">*</span></label>
-      <input type="email" id="email" name="email" required aria-describedby="email-error" />
-      <span class="error-message" id="email-error" role="alert"></span>
-    </div>
+            <!-- Field 2: Email -->
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required aria-describedby="email-error" />
+              <span class="error-message" id="email-error" role="alert"></span>
+            </div>
 
-    <!-- Field 3: Topic (Fieldset & Legend for grouped inputs) -->
-    <fieldset class="form-group">
-      <legend>Reason for Inquiry <span class="required">*</span></legend>
-      <div class="radio-option">
-        <input type="radio" id="reason-job" name="reason" value="job" required />
-        <label for="reason-job">Job Opportunity</label>
-      </div>
-      <div class="radio-option">
-        <input type="radio" id="reason-freelance" name="reason" value="freelance" />
-        <label for="reason-freelance">Freelance Project</label>
-      </div>
-      <div class="radio-option">
-        <input type="radio" id="reason-other" name="reason" value="other" />
-        <label for="reason-other">General Question</label>
-      </div>
-      <span class="error-message" id="reason-error" role="alert"></span>
-    </fieldset>
+            <!-- Field 3: Topic -->
+            <fieldset class="form-group">
+              <legend>Reason for Inquiry <span class="required">*</span></legend>
+              <div class="radio-option">
+                <input type="radio" id="reason-job" name="reason" value="job" required />
+                <label for="reason-job">Job Opportunity</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="reason-freelance" name="reason" value="freelance" />
+                <label for="reason-freelance">Freelance Project</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="reason-other" name="reason" value="other" />
+                <label for="reason-other">General Question</label>
+              </div>
+              <span class="error-message" id="reason-error" role="alert"></span>
+            </fieldset>
 
-    <!-- Field 4: Message -->
-    <div class="form-group">
-      <label for="message">Message <span class="required">*</span></label>
-      <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
-      <span class="error-message" id="message-error" role="alert"></span>
-    </div>
+            <!-- Field 4: Message -->
+            <div class="form-group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+              <span class="error-message" id="message-error" role="alert"></span>
+            </div>
 
-    <button type="submit" class="btn-submit">Send Message</button>
-  </form>
-</section>
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </section>
     </main>
 
-    <!-- 3. FOOTER -->
+    <!-- API FETCH OUTPUT CONTAINER -->
+    <div id="github-stats" style="text-align: center; padding: 1rem;"></div>
+
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Isabel Criswell. All rights reserved.</p>
     </footer>
