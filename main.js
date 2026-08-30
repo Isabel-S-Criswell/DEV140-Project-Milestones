@@ -1,3 +1,4 @@
+// FORM VALIDATION
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -40,28 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
 
     // Validate Name
-    if (!nameInput.value.trim()) {
-      showError(nameInput, 'name-error', 'Please enter your full name.');
+    if (!nameInput || !nameInput.value.trim()) {
+      if (nameInput) showError(nameInput, 'name-error', 'Please enter your full name.');
       isValid = false;
     }
 
     // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
-      showError(emailInput, 'email-error', 'Please enter a valid email address.');
+    if (!emailInput || !emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+      if (emailInput) showError(emailInput, 'email-error', 'Please enter a valid email address.');
       isValid = false;
     }
 
     // Validate Radio Choice
     const reasonChecked = document.querySelector('input[name="reason"]:checked');
     if (!reasonChecked) {
-      document.getElementById('reason-error').textContent = 'Please select a reason for inquiry.';
+      const reasonError = document.getElementById('reason-error');
+      if (reasonError) reasonError.textContent = 'Please select a reason for inquiry.';
       isValid = false;
     }
 
     // Validate Message
-    if (!msgInput.value.trim()) {
-      showError(msgInput, 'message-error', 'Please enter a message.');
+    if (!msgInput || !msgInput.value.trim()) {
+      if (msgInput) showError(msgInput, 'message-error', 'Please enter a message.');
       isValid = false;
     }
 
@@ -73,7 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showError(inputEl, errorId, message) {
     inputEl.setAttribute('aria-invalid', 'true');
-    document.getElementById(errorId).textContent = message;
+    const errorEl = document.getElementById(errorId);
+    if (errorEl) {
+      errorEl.textContent = message;
+    }
   }
 });
 
@@ -142,4 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
         githubStatsContainer.innerHTML = `<p class="github-api-error">Unable to load live GitHub statistics.</p>`;
       });
   }
+});
 });
