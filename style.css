@@ -29,15 +29,13 @@ body {
   padding: 0;
 }
 
-/* Serif font for headings */
 h1, h2, h3 {
   font-family: 'Playfair Display', Georgia, serif;
   color: var(--text-purple);
   margin-top: 0;
-  margin-bottom: 16px; /* 8px system */
+  margin-bottom: 16px;
 }
 
-/* Paragraph styling */
 p {
   color: var(--text-purple);
   margin-top: 8px;
@@ -57,7 +55,7 @@ p {
   border-bottom: 4px solid var(--accent-lilac);
   box-shadow: 0 4px 14px rgba(59, 7, 100, 0.25);
   display: flex;
-  flex-direction: column; /* Stacks nicely on tiny mobile screens */
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
@@ -72,7 +70,6 @@ p {
   gap: 12px;
 }
 
-/* Kills default blue link text & underlines entirely */
 #main-nav a,
 .nav-btn {
   color: var(--bg-eggshell) !important;
@@ -82,14 +79,13 @@ p {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   padding: 10px 18px;
-  background-color: rgba(216, 180, 254, 0.15); /* Soft lilac tint fill */
+  background-color: rgba(216, 180, 254, 0.15);
   border: 1px solid var(--accent-lilac);
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
   display: inline-block;
 }
 
-/* Hover & Focus state for Nav Buttons */
 #main-nav a:hover,
 #main-nav a:focus,
 .nav-btn:hover,
@@ -101,7 +97,6 @@ p {
   outline: none;
 }
 
-/* Accessibility Dropdown aligned inside top bar */
 .a11y-dropdown {
   position: relative;
 }
@@ -163,7 +158,6 @@ p {
   color: var(--bg-eggshell);
 }
 
-/* Tablet & Desktop: Single sleek horizontal bar across top */
 @media (min-width: 768px) {
   #main-nav {
     flex-direction: row;
@@ -171,22 +165,21 @@ p {
   }
 }
 
-  .a11y-menu-content {
-    right: 0;
-    transform: none; /* Align to right edge on desktop */
-  }
+.a11y-menu-content {
+  right: 0;
+  transform: none;
+}
 
-/* Toggleable States */
 body.large-text {
   font-size: 1.25rem;
 }
 
 /* =========================================================
-   2. HIGH CONTRAST MODE (Lilac & White on Dark Eggplant)
+   2. HIGH CONTRAST MODE
    ========================================================= */
 body.high-contrast {
-  background-color: #0D0314 !important; /* Ultra-dark eggplant background */
-  color: #D8B4FE !important;             /* Lilac body text */
+  background-color: #0D0314 !important;
+  color: #D8B4FE !important;
 }
 
 body.high-contrast h1,
@@ -194,13 +187,13 @@ body.high-contrast h2,
 body.high-contrast h3,
 body.high-contrast legend,
 body.high-contrast label {
-  color: #FFFFFF !important;             /* Bright white headers */
+  color: #FFFFFF !important;
 }
 
 body.high-contrast p,
 body.high-contrast li {
   color: #D8B4FE !important;
-  background-color: #1A0728 !important;  /* Dark purple card fill */
+  background-color: #1A0728 !important;
   border-color: #D8B4FE !important;
 }
 
@@ -268,9 +261,8 @@ body.high-contrast .a11y-menu-content button {
    3. ACCESSIBLE CONTACT FORM STYLING
    ========================================================= */
 #contact-section {
-  max-width: 640px;
+  max-width: 100%;
   margin: 0 auto 32px auto;
-  padding: 0 16px;
 }
 
 .form-group {
@@ -323,7 +315,6 @@ textarea:focus {
   border-color: var(--text-purple);
 }
 
-/* High contrast error messages (passes WCAG AA) */
 .error-message {
   color: var(--error-red);
   font-size: 0.875rem;
@@ -331,7 +322,6 @@ textarea:focus {
   margin-top: 4px;
 }
 
-/* Strip default paragraph styles if inside error message */
 .error-message p {
   border: none;
   padding: 0;
@@ -368,6 +358,15 @@ textarea:focus {
   height: 100%;
 }
 
+.full-width-header {
+  grid-column: 1 / -1;
+}
+
+.project-grid {
+  display: grid;
+  gap: 24px;
+}
+
 ul {
   padding-left: 24px;
 }
@@ -398,7 +397,7 @@ footer {
    5. RESPONSIVENESS & MEDIA QUERIES
    ========================================================= */
 
-/* MEDIA QUERY 1: Tablet Breakpoint (768px and up) */
+/* Tablet Breakpoint (768px and up) */
 @media (min-width: 768px) {
   #main-nav {
     flex-direction: row;
@@ -422,9 +421,19 @@ footer {
   .card {
     margin-bottom: 0;
   }
+  
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  #contact-section {
+    grid-column: 1 / -1; /* Gives contact form full width of grid on tablet */
+    max-width: 800px;    /* Prevents it from getting too wide to read */
+    margin: 0 auto;
+  }
 }
 
-/* MEDIA QUERY 2: Desktop Breakpoint (1200px and up) */
+/* Desktop Breakpoint (1200px and up) */
 @media (min-width: 1200px) {
   .grid-container {
     max-width: 1120px;
@@ -436,6 +445,7 @@ footer {
     padding: 24px 48px;
   }
 }
+
 #github-stats {
   text-align: center;
   padding: 1rem;
