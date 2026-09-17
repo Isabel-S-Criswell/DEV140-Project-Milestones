@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Isabel's Project Milestone Portfolio</title>
+    <title>Isabel's Project Milestone Portfolio</title>
     
-<!-- GOOGLE FONTS (Serif Heading + Sans-Serif Body) -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -20,8 +20,10 @@
     <a href="projects.html" class="nav-btn">PROJECTS & WORK</a>
     <a href="contact.html" class="nav-btn">ABOUT ME & CONTACT</a>
   </nav>
-<div id="github-stats">Loading live GitHub profile data...</div>
-  <!-- Accessibility Dropdown inside the same header bar -->
+  
+  <p id="github-stats">Loading live GitHub profile data...</p>
+
+  <!-- Accessibility Dropdown -->
   <div class="a11y-dropdown">
     <button id="a11y-toggle-btn" type="button" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility Options">
       ♿ Accessibility
@@ -33,10 +35,15 @@
   </div>
 </header>
 
-    <!-- 2. MAIN HOMEPAGE CONTENT -->
+    <!-- MAIN HOMEPAGE CONTENT -->
     <main class="grid-container">
-        <section class="card">
+        <!-- Spans full width at the top for proper hierarchy -->
+        <div class="full-width-header">
             <h1>Home</h1>
+        </div>
+
+        <section class="card">
+            <h2>About Me</h2>
             <p>Welcome to my portfolio! I am a Data Specialist and IT student specializing in Applied AI, focused on bridging the gap between data systems and intuitive user experiences.</p>
         </section>
 
@@ -50,7 +57,7 @@
         </section>
     </main>
 
-    <!-- 3. FOOTER -->
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Isabel Criswell. All rights reserved.</p>
     </footer>
