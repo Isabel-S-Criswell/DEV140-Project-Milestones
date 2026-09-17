@@ -261,9 +261,10 @@ body.high-contrast .a11y-menu-content button {
    3. ACCESSIBLE CONTACT FORM STYLING
    ========================================================= */
 #contact-section {
-  max-width: 100%;
-  margin: 0 auto 32px auto;
-}
+    grid-column: 1 / -1; /* Forces the card to span across all grid columns */
+    max-width: 100%;     /* Removes the narrow restriction so it fills the space */
+    margin: 0 auto;
+  }
 
 .form-group {
   margin-bottom: 24px;
