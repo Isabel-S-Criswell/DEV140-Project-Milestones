@@ -158,18 +158,6 @@ p {
   color: var(--bg-eggshell);
 }
 
-@media (min-width: 768px) {
-  #main-nav {
-    flex-direction: row;
-    padding: 16px 32px;
-  }
-}
-
-.a11y-menu-content {
-  right: 0;
-  transform: none;
-}
-
 body.large-text {
   font-size: 1.25rem;
 }
@@ -260,11 +248,12 @@ body.high-contrast .a11y-menu-content button {
 /* =========================================================
    3. ACCESSIBLE CONTACT FORM STYLING
    ========================================================= */
+
+/* Default Mobile Styling */
 #contact-section {
-    grid-column: 1 / -1; /* Forces the card to span across all grid columns */
-    max-width: 100%;     /* Removes the narrow restriction so it fills the space */
-    margin: 0 auto;
-  }
+  max-width: 100%;
+  margin: 0 auto 32px auto;
+}
 
 .form-group {
   margin-bottom: 24px;
@@ -394,6 +383,18 @@ footer {
   margin-bottom: 24px;
 }
 
+#github-stats {
+  text-align: center;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  background-color: #f3e8ff;
+  border: 1px solid #c084fc;
+  border-radius: 8px;
+  color: #3b0764;
+  font-weight: 500;
+}
+
 /* =========================================================
    5. RESPONSIVENESS & MEDIA QUERIES
    ========================================================= */
@@ -403,6 +404,12 @@ footer {
   #main-nav {
     flex-direction: row;
     justify-content: space-between;
+    padding: 16px 32px;
+  }
+
+  .a11y-menu-content {
+    right: 0;
+    transform: none;
   }
 
   #main-nav nav {
@@ -427,10 +434,11 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   
+  /* Desktop Override for Contact Form */
   #contact-section {
-    grid-column: 1 / -1; /* Gives contact form full width of grid on tablet */
-    max-width: 800px;    /* Prevents it from getting too wide to read */
-    margin: 0 auto;
+    grid-column: 1 / -1; 
+    max-width: 100%; /* Ensures it fills the grid column space completely */
+    margin: 0;
   }
 }
 
@@ -445,16 +453,4 @@ footer {
   #main-nav {
     padding: 24px 48px;
   }
-}
-
-#github-stats {
-  text-align: center;
-  padding: 1rem;
-  margin: 1.5rem auto;
-  max-width: 600px;
-  background-color: #f3e8ff;
-  border: 1px solid #c084fc;
-  border-radius: 8px;
-  color: #3b0764;
-  font-weight: 500;
 }
